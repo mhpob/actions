@@ -1,0 +1,52 @@
+name: 'Setup VDAT'
+description: "Pull VDAT from Ocean Tracking Network's GitLab"
+author: "Mike O'Brien"
+
+inputs:
+  vdat-repo:
+    description: "VDAT repository"
+    required: true
+  vdat-version:
+    description: "Version of VDAT to install"
+    default: "7.0.0-20231107"
+    required: false
+  gitlab-auth:
+    description: 'A GitHub Secret that holds the GitLab personal access token'
+    required: true
+
+outputs:
+  installed-vdat-version:
+    description: 'The full VDAT version installed'
+
+runs:
+  using: "composite"
+
+  env:
+    GL_PAT: ${{ inputs.gitlab-auth }}
+  
+  steps:
+    - name: Convert URL
+
+    - name: Set up VDAT on Windows
+      if: runner.os == 'Windows'
+      run: |
+        echo "VDAT_EXE=D:\a\rvdat\vdat.exe" >> $env:GITHUB_ENV
+        curl -o ..\vdat.exe --request GET --header "PRIVATE-TOKEN: $env:GL_PAT" "https://gitlab.oceantrack.org/api/v4/projects/otndc%2Fvdat%2Dworking%2Dgroup/repository/files/releases%2Fvdat%2D7%2E0%2E0%2D20231107%2FWindows%2Dx86%5F64%2Fvdat%2Eexe/raw?ref=master"
+        ..\vdat.exe --help
+
+    - name: Set up VDAT on Linux
+      if: runner.os == 'Linux'
+      run: |
+        echo "VDAT_EXE=/home/runner/work/rvdat/vdat" >> $GITHUB_ENV
+        curl -o ../vdat --request GET --header "PRIVATE-TOKEN: $GL_PAT" "https://gitlab.oceantrack.org/api/v4/projects/otndc%2Fvdat%2Dworking%2Dgroup/repository/files/releases%2Fvdat%2D7%2E0%2E0%2D20231107%2FLinux%2Dx86%5F64%2Fvdat/raw?ref=master"
+        chmod +x ../vdat
+        ../vdat --help
+
+    - name: Set up VDAT on macOS
+      if: runner.os == 'macOS'
+      run: |
+        echo "VDAT_EXE=/Users/runner/work/rvdat/vdat" >> $GITHUB_ENV
+        curl -o ../vdat --request GET --header "PRIVATE-TOKEN: $GL_PAT" "https://gitlab.oceantrack.org/api/v4/projects/otndc%2Fvdat%2Dworking%2Dgroup/repository/files/releases%2Fvdat%2D7%2E0%2E0%2D20231107%2FmacOS%2Dx86%5F64%2Fvdat/raw?ref=master"
+        chmod +x ../vdat
+        ../vdat --help
+
