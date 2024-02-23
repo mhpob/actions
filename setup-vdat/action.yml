@@ -26,6 +26,7 @@ runs:
         ..\vdat.exe --help
 
     - name: Set up VDAT on Linux
+      shell: bash
       env:
         GL_PAT: ${{ inputs.gitlab-auth }}
       if: runner.os == 'Linux'
