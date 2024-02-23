@@ -20,6 +20,8 @@ runs:
   steps:
     - name: Set up VDAT on Windows
       shell: pwsh
+      env:
+        GL_PAT: ${{ inputs.gitlab-auth }}
       if: runner.os == 'Windows'
       run: |
         echo "VDAT_EXE=D:\a\rvdat\vdat.exe" >> $env:GITHUB_ENV
@@ -39,6 +41,8 @@ runs:
 
     - name: Set up VDAT on macOS
       shell: bash
+      env:
+        GL_PAT: ${{ inputs.gitlab-auth }}
       if: runner.os == 'macOS'
       run: |
         echo "VDAT_EXE=/Users/runner/work/rvdat/vdat" >> $GITHUB_ENV
