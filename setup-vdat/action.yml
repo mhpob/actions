@@ -17,8 +17,6 @@ outputs:
     description: 'The full VDAT version installed'
 runs:
   using: "composite"
-  env:
-    GL_PAT: ${{ inputs.gitlab-auth }}
   steps:
     - name: Set up VDAT on Windows
       if: runner.os == 'Windows'
@@ -28,6 +26,8 @@ runs:
         ..\vdat.exe --help
 
     - name: Set up VDAT on Linux
+      env:
+        GL_PAT: ${{ inputs.gitlab-auth }}
       if: runner.os == 'Linux'
       run: |
         echo "VDAT_EXE=/home/runner/work/rvdat/vdat" >> $GITHUB_ENV
