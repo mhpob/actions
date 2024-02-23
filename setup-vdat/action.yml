@@ -19,6 +19,7 @@ runs:
   using: "composite"
   steps:
     - name: Set up VDAT on Windows
+      shell: pwsh
       if: runner.os == 'Windows'
       run: |
         echo "VDAT_EXE=D:\a\rvdat\vdat.exe" >> $env:GITHUB_ENV
@@ -37,6 +38,7 @@ runs:
         ../vdat --help
 
     - name: Set up VDAT on macOS
+      shell: bash
       if: runner.os == 'macOS'
       run: |
         echo "VDAT_EXE=/Users/runner/work/rvdat/vdat" >> $GITHUB_ENV
