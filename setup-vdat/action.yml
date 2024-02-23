@@ -1,7 +1,6 @@
 name: 'Setup VDAT'
 description: "Pull VDAT from Ocean Tracking Network's GitLab"
 author: "Mike O'Brien"
-
 inputs:
 #  vdat-repo:
 #    description: "VDAT repository"
@@ -13,11 +12,9 @@ inputs:
   gitlab-auth:
     description: 'A GitHub Secret that holds the GitLab personal access token'
     required: true
-
 outputs:
   installed-vdat-version:
     description: 'The full VDAT version installed'
-
 runs:
   using: "composite"
   env:
