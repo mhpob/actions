@@ -3,13 +3,13 @@ description: "Pull VDAT from Ocean Tracking Network's GitLab"
 author: "Mike O'Brien"
 
 inputs:
-  vdat-repo:
-    description: "VDAT repository"
-    required: true
-  vdat-version:
-    description: "Version of VDAT to install"
-    default: "7.0.0-20231107"
-    required: false
+#  vdat-repo:
+#    description: "VDAT repository"
+#    required: false
+#  vdat-version:
+#    description: "Version of VDAT to install"
+#    default: "7.0.0-20231107"
+#    required: false
   gitlab-auth:
     description: 'A GitHub Secret that holds the GitLab personal access token'
     required: true
