@@ -49,6 +49,10 @@ and is supplied using `gitlab-auth: ${{ secrets.GITLAB_TOKEN }}`
 - Currently no output; future version will contain the installed VDAT version.
 
 ## Usage
+You can see this action _in action_ in the testing workflow of the [`rvdat` 
+R package](https://github.com/mhpob/rvdat/blob/main/.github/workflows/R-CMD-check.yaml#L35).
+The action can be used as below in a more-general manner:
+
 ``` yaml
 jobs:
   set-up-vdat:
