@@ -63,14 +63,14 @@ jobs:
         os: [ubuntu-latest, windows-latest, macos-latest]
     
     runs-on: ${{ matrix.os }}
+
     name: VDAT for ${{ matrix.os }}
-    
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
       
       - name: Set up VDAT
-        uses: mhpob/setup-vdat@v1
+        uses: mhpob/setup-vdat-action@v1
         with:
           gitlab-auth: ${{ secrets.GITLAB_TOKEN }}
 ```
