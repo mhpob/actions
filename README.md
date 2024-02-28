@@ -46,7 +46,9 @@ and is supplied using `gitlab-auth: ${{ secrets.GITLAB_TOKEN }}`
 
 ## Outputs
 
-- Currently no output; future version will contain the installed VDAT version.
+- Currently no output, though the result of `vdat --help` is printed
+  to confirm installation. Future version will output the installed
+  VDAT version as an environmental variable.
 
 ## Usage
 You can see this action _in action_ in the testing workflow of the [`rvdat` 
