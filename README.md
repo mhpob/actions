@@ -1,5 +1,7 @@
 # setup-vdat-action
 
+**Action archived on July 8, 2024 due to Innovasea's restrictive EULA**
+
 This action installs the VDAT executable that drives [Innovasea's Fathom
 software](https://www.innovasea.com/fish-tracking/products/fathom-software/).
 Windows, Linux, and macOS operating systems are supported. It does this by 
